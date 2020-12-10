@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.0.3 (2020-12-10)
+
+
+### Features
+
+* **main:** :fire: inital commit ([54feeb1](https://github.com/imran-ib/video-chat-editor-server/commit/54feeb1dd37d3e584c67dacf4d728b1bc75bcdef))
+
 ### 0.0.2 (2020-12-10)
 
 

@@ -1,7 +1,7 @@
 {
   "name": "subscriptions-pubsub",
   "license": "MIT",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "scripts": {
     "predev": "npm run generate:prisma",
     "dev": "tsnd --no-notify --respawn --transpileOnly ./src",
