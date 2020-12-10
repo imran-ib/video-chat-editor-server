@@ -1,0 +1,42 @@
+{
+  "name": "subscriptions-pubsub",
+  "license": "MIT",
+  "version": "0.0.2",
+  "scripts": {
+    "predev": "npm run generate:prisma",
+    "dev": "tsnd --no-notify --respawn --transpileOnly ./src",
+    "prebuild": "npm run clean && npm run generate",
+    "build": "tsc",
+    "seed": "ts-node prisma/seed.ts",
+    "clean": "rimraf dist",
+    "generate": "npm run generate:prisma && npm run generate:nexus",
+    "migrate": "prisma migrate dev --preview-feature && prisma migrate dev --preview-feature",
+    "generate:prisma": "prisma generate",
+    "generate:nexus": "ts-node --transpile-only ./src/schema",
+    "start": "node dist/index.js",
+    "release": "standard-version"
+  },
+  "dependencies": {
+    "@nexus/schema": "0.19.2",
+    "@prisma/client": "^2.13.0",
+    "apollo-server": "2.19.0",
+    "dotenv": "8.2.0",
+    "nexus-plugin-prisma": "0.25.0"
+  },
+  "devDependencies": {
+    "@prisma/cli": "^2.13.0",
+    "@types/node": "^13.13.35",
+    "@types/prettier": "2.1.5",
+    "cross-env": "7.0.3",
+    "prettier": "2.2.1",
+    "rimraf": "3.0.2",
+    "standard-version": "^9.0.0",
+    "ts-node": "^9.1.1",
+    "ts-node-dev": "1.0.0-pre.50",
+    "typescript": "^4.1.2"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  }
+}
