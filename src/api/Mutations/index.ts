@@ -1,6 +1,6 @@
-import * as nexus from '@nexus/schema'
+import { mutationType } from 'nexus'
 
-export const Mutation = nexus.mutationType({
+export const Mutation = mutationType({
   definition(t) {
     t.crud.createOneUser()
   },

@@ -1,9 +1,16 @@
 {
   "compilerOptions": {
     "sourceMap": true,
+    "module": "commonjs",
+    "target": "ES2018",
     "outDir": "dist",
-    "strict": true,
-    "lib": ["esnext"],
-    "esModuleInterop": true
+    "lib": ["esnext", "dom"],
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "skipLibCheck": true,
+    "noUnusedParameters": false
   }
 }

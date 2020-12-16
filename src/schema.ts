@@ -1,10 +1,20 @@
-import * as nexus from '@nexus/schema'
+import { makeSchema, subscriptionField } from 'nexus'
 import { nexusPrisma } from 'nexus-plugin-prisma'
 import { join } from 'path'
 import { Context } from './types'
 import * as types from './api'
 
-export const schema = nexus.makeSchema({
+// export const Subscription = subscriptionField('latestPost', {
+//   type: 'Post',
+//   subscribe(_root, _args, ctx) {
+//     return ctx.pubsub.asyncIterator('latestPost')
+//   },
+//   resolve(payload) {
+//     return payload
+//   },
+// })
+
+export const schema = makeSchema({
   types,
   plugins: [
     nexusPrisma({
@@ -13,20 +23,19 @@ export const schema = nexus.makeSchema({
     }),
   ],
   outputs: {
-    typegen: join(__dirname, 'generated', 'index.d.ts'),
-    schema: join(__dirname, 'generated', 'schema.graphql'),
+    typegen: join(__dirname, 'generated/index.d.ts'),
+    schema: join(__dirname, 'generated/schema.graphql'),
   },
-  typegenAutoConfig: {
-    sources: [
+  contextType: {
+    module: join(__dirname, 'types.ts'),
+    export: 'Context',
+  },
+  sourceTypes: {
+    modules: [
       {
-        source: '@prisma/client',
+        module: '@prisma/client',
         alias: 'prisma',
       },
-      {
-        source: join(__dirname, 'types.ts'),
-        alias: 'ctx',
-      },
     ],
-    contextType: 'ctx.Context',
   },
 })

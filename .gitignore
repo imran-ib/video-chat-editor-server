@@ -9,5 +9,3 @@ src/generated
 node_modules
 .DS_Store
 query-engine*
-
-

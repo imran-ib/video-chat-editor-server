@@ -1,11 +1,10 @@
-import * as nexus from '@nexus/schema'
+import { objectType } from 'nexus'
 
-export const User = nexus.objectType({
+export const User = objectType({
   name: 'User',
   definition(t) {
     t.model.id()
     t.model.email()
     t.model.name()
-    t.model.password()
   },
 })

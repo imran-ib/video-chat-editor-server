@@ -1,6 +1,6 @@
-import * as nexus from '@nexus/schema'
+import { queryType } from 'nexus'
 
-export const Query = nexus.queryType({
+export const Query = queryType({
   definition(t) {
     t.crud.user()
   },
