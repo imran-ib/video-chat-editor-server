@@ -3,7 +3,8 @@ import { PubSub } from 'apollo-server'
 import { Context } from './types'
 
 const prisma = new PrismaClient({
-  log: ['query'],
+  log: ['query' ,'error'],
+  errorFormat: 'pretty',
 })
 const pubsub = new PubSub()
 

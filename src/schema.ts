@@ -1,8 +1,10 @@
-import { makeSchema, subscriptionField } from 'nexus'
+import { makeSchema, subscriptionField, connectionPlugin} from 'nexus'
 import { nexusPrisma } from 'nexus-plugin-prisma'
 import { join } from 'path'
 import { Context } from './types'
 import * as types from './api'
+import { permissions } from './permissions'
+import { applyMiddleware } from 'graphql-middleware'
 
 // export const Subscription = subscriptionField('latestPost', {
 //   type: 'Post',
@@ -14,13 +16,16 @@ import * as types from './api'
 //   },
 // })
 
-export const schema = makeSchema({
-  types,
-  plugins: [
+export const schema =
+applyMiddleware(
+  makeSchema({
+    types,
+    plugins: [
     nexusPrisma({
       experimentalCRUD: true,
       prismaClient: (ctx: Context) => ctx.prisma,
     }),
+    connectionPlugin()
   ],
   outputs: {
     typegen: join(__dirname, 'generated/index.d.ts'),
@@ -39,3 +44,4 @@ export const schema = makeSchema({
     ],
   },
 })
+,permissions)

@@ -11,8 +11,17 @@ datasource db {
 model User {
   id        Int      @default(autoincrement()) @id
   email     String   @unique
-  name      String
+  displayName      String
+  username      String
   password String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+
+model GetInTouchMessages {
+  id        Int      @default(autoincrement()) @id
+  email     String  @default("No Email was Provided")
+  name      String  @default("No Name was Provided")
+  message   String @default("No Message was Provided")
 }
